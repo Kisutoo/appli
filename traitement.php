@@ -21,5 +21,23 @@
         }
     }
 
+    if(isset($_GET['action']))
+    {
+        switch($_GET['action'])
+        {
+            case "clear":
+                session_destroy();
+                break;
+            case "down-qtt":
+                if (isset($_GET['index']) && isset($_SESSION['products'][$_GET['index']])) {
+                if ($_SESSION['products'][$_GET['index']]['qtt'] > 1)
+                    $_SESSION['products'][$_GET['index']]['qtt']--;
+                else
+                    unset($_SESSION['products'][$_GET['index']]);
+                }
+                break;
+        }
+    }
+
     header("Location:index.php"); // Dans le cas ou le if du dessus n'est pas vrai,  effectue une redirection grâce à la fonction header() (code 302) --> (code 200 sur la page cible)
 ?>
