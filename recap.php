@@ -55,10 +55,11 @@
         {  
             echo "<tr>",
                     "<td>" .$index. "</td>",
-                    "<td>" .$product['name']. "</td>",
+                    "<td>".$product['name']."</td>",
                     "<td>".number_format($product['price'], 2, ",", "&nbsp;"). "&nbsp;€</td>",
-                    "<td><a class=updown href=traitement.php?action=down-qtt&index=&index> - </a> " .$product['qtt']. " <a class=updown href=traitement.php?action=up-qtt>+</a></td>",
+                    "<td><a class='updown' href='traitement.php?action=down-qtt&index=" . $index ."'> - </a> " .$product['qtt']. " <a class=updown href='traitement.php?action=up-qtt&index=" . $index . "'> + </a></td>",
                     "<td>".number_format($product['total'], 2, ",", "&nbsp;"). "&nbsp;€</td>", // Modifier l'affichage d'une valeur numérique en précisant plusieurs paramètres
+                    "<td><a class='delete' href='traitement.php?action=delete&index=" .$index."'>supprimer</a>",
                 "</tr>";
             $totalGeneral += $product['total'];
         }
@@ -67,7 +68,7 @@
                 "<td><strong>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
              "</tr>",
              "<tr>",
-                "<td><a class=clear href=traitement.php?action=clear>Clear all</a></td>",
+                "<td><a class=clear href=traitement.php?action=clear>Clear All</a></td>",
              "</tr>",
             "</tbody>",
             "</table>";
